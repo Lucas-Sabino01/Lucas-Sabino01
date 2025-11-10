@@ -34,10 +34,12 @@ Aqui estão as tecnologias com as quais tenho mais experiência:
 **Backend:**
 
 <p>
-<img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white" alt="C#">
-<img src="https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET">
-<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java">
-<img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white" alt="Spring Boot">
+<img src="https://img.shields.io/badge/MS%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white" alt="MS SQL Server">
+<img src="https://img.shields.io/badge/PostgreSQL-316192?logo=postgresql&logoColor=white" alt="PostgreSQL">
+<img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+<img src="httpsD://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white" alt="Git">
+<img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" alt="Figma">
+<img src="https://img.shields.io/badge/Photoshop-31A8FF?style=for-the-badge&logo=Adobe%20Photoshop&logoColor=black" alt="Photoshop">
 </p>
 
 **Frontend:**
@@ -45,8 +47,8 @@ Aqui estão as tecnologias com as quais tenho mais experiência:
 <p>
 <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
 <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/shadcn%252Fui-000000%3Fstyle%3Dfor-the-badge%26logo%3Dshadcnui%26logoColor%3Dwhite" alt="Shadcn/UI">
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/Zod-3E67B1%3Fstyle%3Dfor-the-badge%26logo%3Dzod%26logoColor%3Dwhite" alt="Zod">
+<img src="https://img.shields.io/badge/shadcn%2Fui-000?logo=shadcnui&logoColor=fff&style=for-the-badge" alt="Shadcn/UI">
+<img src="https://img.shields.io/badge/-Zod-3E67B1?style=flat&logo=zod&logoColor=white" alt="Zod">
 </p>
 
 **Bancos de Dados & Ferramentas:**
