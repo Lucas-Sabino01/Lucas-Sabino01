@@ -12,7 +12,7 @@ Sistema de gestão de armazém (WMS) para a indústria, focado em substituir pro
 
 - **Backend:** Kotlin, Spring Boot (com Spring Security para JWT) e PostgreSQL.
     
- Nesse projeto fui responsável pela parte do `Front-End`
+- _Nesse projeto fui responsável pela parte do `Front-End`_
 - **Frontend:** React, TypeScript, Vite, TanStack Query, Zod, react-hook-form e **shadcn/ui**.
     
 
@@ -35,7 +35,7 @@ Aqui estão as tecnologias com as quais tenho mais experiência:
 
 <p>
 <img src="https://img.shields.io/badge/MS%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white" alt="MS SQL Server">
-<img src="https://img.shields.io/badge/PostgreSQL-316192?logo=postgresql&logoColor=white" alt="PostgreSQL">
+<img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
 <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
 <img src="https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white" alt="Git">
 <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" alt="Figma">
@@ -47,8 +47,8 @@ Aqui estão as tecnologias com as quais tenho mais experiência:
 <p>
 <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
 <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
-<img src="https://img.shields.io/badge/shadcn%2Fui-000?logo=shadcnui&logoColor=fff&style=for-the-badge" alt="Shadcn/UI">
-<img src="https://img.shields.io/badge/-Zod-3E67B1?style=flat&logo=zod&logoColor=white" alt="Zod">
+<img src="https://img.shields.io/badge/shadcn%2Fui-000?style=for-the-badge&logo=shadcnui&logoColor=fff" alt="Shadcn/UI">
+<img src="https://img.shields.io/badge/Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=white" alt="Zod">
 </p>
 
 ### 🏆 Meus Troféus e Estatísticas no GitHub
