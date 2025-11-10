@@ -57,7 +57,7 @@ Aqui estão as tecnologias com as quais tenho mais experiência:
 <img src="https://img.shields.io/badge/MS%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white" alt="MS SQL Server">
 <img src="https://www.google.com/search?q=https://img.shields.io/badge/PostgreSQL-336791%3Fstyle%3Dfor-the-badge%26logo%3Dpostgresql%26logoColor%3Dwhite" alt="PostgreSQL">
 <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
-<img src="https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white" alt="Git">
+<img src="https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white" alt="Git">
 <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" alt="Figma">
 <img src="https://img.shields.io/badge/Photoshop-31A8FF?style=for-the-badge&logo=Adobe%20Photoshop&logoColor=black" alt="Photoshop">
 </p>
@@ -66,15 +66,11 @@ Aqui estão as tecnologias com as quais tenho mais experiência:
 
 <p align="center">
 <!-- Card de Troféus -->
-<a href="https://github.com/Lucas-Sabino01">
 <img src="https://www.google.com/search?q=https://github-profile-trophy.vercel.app/%3Fusername%3DLucas-Sabino01%26theme%3Ddracula%26margin-w%3D15%26margin-h%3D15%26column%3D-1" alt="Troféus do GitHub de Lucas Sabino" />
-</a>
 </p>
 <p align="center">
 <!-- Card de Linguagens Mais Usadas -->
-<a href="https://github.com/Lucas-Sabino01">
 <img align="center" src="https://www.google.com/search?q=https://github-readme-stats.vercel.app/api/top-langs/%3Fusername%3DLucas-Sabino01%26layout%3Dcompact%26theme%3Ddracula" alt="Linguagens Mais Usadas" />
-</a>
 </p>
 
 ### 📫 Como me encontrar
