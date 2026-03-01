@@ -23,9 +23,7 @@ async function fetchGitHubStats() {
     const yesterday = new Date(now.getTime() - (24 * 60 * 60 * 1000));
     
     const pushEvents = events.filter(e => e.type === 'PushEvent' && new Date(e.created_at) > yesterday);
-    
     const commits = pushEvents.reduce((acc, event) => acc + (event.payload.commits?.length || 0), 0);
-    
     const reposTouched = [...new Set(pushEvents.map(e => e.repo.name))];
 
     let topLanguage = 'React / C#';
@@ -51,15 +49,15 @@ async function generateAIResponse(stats) {
         prompt = `
         Você é uma IA de monitoramento de código analisando o perfil do engenheiro de software Lucas Sabino.
         Hoje ele não fez commits públicos. 
-        Escreva um parágrafo de 3 linhas, com humor inteligente, dizendo que pausas são importantes e deduzindo que ele deve estar focando em estudar novas arquiteturas, documentando o WMS TecnoTooling-ALFA ou apenas recarregando as baterias. 
-        Use no máximo 2 emojis. Fale em português do Brasil na terceira pessoa ("O Lucas..."). Evite usar o caractere "&".
+        Escreva um parágrafo curto de no máximo 2 frases, com humor inteligente, dizendo que pausas são importantes e deduzindo que ele deve estar focando em estudar novas arquiteturas, documentando o WMS TecnoTooling-ALFA ou apenas recarregando as baterias. 
+        Use no máximo 2 emojis. Fale em português do Brasil na terceira pessoa ("O Lucas..."). Evite usar o caractere "&". Seja muito conciso.
         `;
     } else {
         prompt = `
         Você é uma IA de monitoramento de código analisando o perfil do engenheiro de software Lucas Sabino.
         Hoje ele fez ${stats.commits} commits nos repositórios: ${stats.repos.join(', ')}.
-        Escreva um parágrafo de 3 linhas, profissional e descontraído, elogiando a consistência dele.
-        Use no máximo 2 emojis. Fale em português do Brasil na terceira pessoa ("O Lucas..."). Evite usar o caractere "&".
+        Escreva um parágrafo curto de no máximo 2 frases, profissional e descontraído, elogiando a consistência dele.
+        Use no máximo 2 emojis. Fale em português do Brasil na terceira pessoa ("O Lucas..."). Evite usar o caractere "&". Seja muito conciso.
         `;
     }
 
@@ -93,7 +91,7 @@ async function main() {
             .replace('{{AI_SUMMARY}}', safeAiMessage)
             .replace('{{COMMITS_TODAY}}', stats.commits.toString())
             .replace('{{TOP_LANGUAGE}}', stats.topLanguage)
-            .replace('Alto 🚀', stats.energyLevel) 
+            .replace('{{ENERGY_LEVEL}}', stats.energyLevel) 
             .replace('{{DATE}}', date);
 
         fs.writeFileSync('ai-status-widget.svg', svgTemplate);

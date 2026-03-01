@@ -1,6 +1,7 @@
 <p align="center">
   <img src="./ai-status-widget.svg" alt="AI Status Widget" width="100%">
 </p>
+
 # Olá! 👋 Sou o Lucas Sabino
 
 Engenheiro de software em formação, apaixonado por criar soluções web robustas e escaláveis que resolvem problemas reais.
