@@ -55,16 +55,6 @@ Aqui estão as tecnologias com as quais tenho mais experiência:
 <img src="https://img.shields.io/badge/Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=white" alt="Zod">
 </p>
 
-### 🏆 Meus Troféus e Estatísticas no GitHub
-
-<div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=Lucas-Sabino01&theme=dracula&margin-w=15&margin-h=15&column=-1&v=1" alt="Troféus do GitHub de Lucas Sabino" />
-</div>
-<br/>
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Lucas-Sabino01&layout=compact&theme=dracula&v=1" alt="Linguagens Mais Usadas" />
-</div>
-
 ### 📫 Como me encontrar
 [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lucas-sabino-492571355?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BltCJS5VMQ06EgeH6YbCTtw%3D%3D)
 &nbsp;
