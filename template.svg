@@ -27,7 +27,9 @@
         .stat-title { font-size: 12px; color: #8b949e; margin-bottom: 8px; text-transform: uppercase; }
         .stat-value { font-size: 24px; font-weight: bold; color: #fff; margin: 0; }
         .highlight { color: #58a6ff; }
-        .footer { margin-top: 24px; font-size: 12px; color: #8b949e; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 16px; }
+        /* Ajustei a cor para ficar mais legível e tirei a quebra de linha estranha */
+        .footer { margin-top: 24px; font-size: 13px; color: #a5d6ff; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 16px; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .footer strong { color: #fff; }
       </style>
       
       <div class="widget-container">
@@ -66,7 +68,7 @@
         </div>
         
         <div class="footer">
-          🤖 Este widget é gerado e atualizado diariamente via <strong>GitHub Actions</strong>. A IA do <strong>Google Gemini</strong> analisa a minha atividade de commits e escreve o resumo.
+          🤖 Widget atualizado diariamente via <strong>GitHub Actions</strong>. A IA do <strong>Google Gemini</strong> analisa os meus commits e escreve o resumo.
         </div>
       </div>
     </div>
