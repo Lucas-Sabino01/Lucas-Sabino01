@@ -1,4 +1,6 @@
-# Olá! 👋 Sou o Lucas Sabino
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Lucas-Sabino01/Lucas-Sabino01/main/ai-status-widget.svg" alt="AI Status Widget" width="100%">
+</p># Olá! 👋 Sou o Lucas Sabino
 
 Engenheiro de software em formação, apaixonado por criar soluções web robustas e escaláveis que resolvem problemas reais.
 

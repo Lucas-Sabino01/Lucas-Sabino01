@@ -1,0 +1,21 @@
+{
+  "name": "lucas-sabino01",
+  "version": "1.0.0",
+  "description": "Engenheiro de software em formação, apaixonado por criar soluções web robustas e escaláveis que resolvem problemas reais.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lucas-Sabino01/Lucas-Sabino01.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Lucas-Sabino01/Lucas-Sabino01/issues"
+  },
+  "homepage": "https://github.com/Lucas-Sabino01/Lucas-Sabino01#readme"
+}

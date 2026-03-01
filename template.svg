@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="334">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161b22" />
+      <stop offset="100%" stop-color="#0d1117" />
+    </linearGradient>
+  </defs>
+
+  <rect width="848" height="332" x="1" y="1" rx="16" fill="url(#bg-grad)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="height: 100%;">
+      <style>
+        .widget-container {
+            color: #e6edf3;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            padding: 32px;
+            height: 100%;
+            box-sizing: border-box;
+            position: relative;
+            background: transparent;
+        }
+        .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
+        .title { font-size: 20px; font-weight: bold; margin: 0; color: #fff; }
+        .subtitle { font-size: 14px; color: #8b949e; margin-top: 4px; display: flex; align-items: center; gap: 8px;}
+        .status-dot { width: 10px; height: 10px; background-color: #3fb950; border-radius: 50%; }
+        .ai-box { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 24px; position: relative; }
+        .ai-tag { position: absolute; top: -10px; left: 24px; background: #0d1117; color: #d2a8ff; font-size: 12px; font-weight: bold; padding: 0 8px; border-radius: 4px; }
+        .ai-text { font-size: 16px; line-height: 1.6; color: #c9d1d9; margin: 0; }
+        .stats-grid { display: flex; gap: 16px; margin-top: 24px; }
+        .stat-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 16px; flex: 1; }
+        .stat-title { font-size: 12px; color: #8b949e; margin-bottom: 8px; text-transform: uppercase; }
+        .stat-value { font-size: 24px; font-weight: bold; color: #fff; margin: 0; }
+        .highlight { color: #58a6ff; }
+      </style>
+      
+      <div class="widget-container">
+        <div class="header">
+          <div>
+            <h2 class="title">AI Status Overview</h2>
+            <div class="subtitle">
+              <div class="status-dot"></div>
+              A monitorizar o ritmo de código...
+            </div>
+          </div>
+          <div style="text-align: right; font-size: 12px; color: #8b949e;">
+            ÚLTIMA ATUALIZAÇÃO<br/>
+            <span style="color: #c9d1d9;">{{DATE}}</span>
+          </div>
+        </div>
+
+        <div class="ai-box">
+          <div class="ai-tag">ANÁLISE SINTÉTICA (GEMINI AI)</div>
+          <p class="ai-text">{{AI_SUMMARY}}</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-title">Commits Hoje</div>
+            <div class="stat-value">{{COMMITS_TODAY}}</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-title">Linguagem Foco</div>
+            <div class="stat-value highlight">{{TOP_LANGUAGE}}</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-title">Nível de Energia</div>
+            <div class="stat-value" style="color: #3fb950;">Alto 🚀</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
+</svg>
