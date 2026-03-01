@@ -16,8 +16,9 @@ async function fetchGitHubStats() {
     
     if (!Array.isArray(events)) {
         console.error("Resposta inesperada do GitHub:", events);
-        return { commits: 0, repos: [], topLanguage: 'Planejamento & Café ☕', energyLevel: 'Recarregando 🔋' };
+        return { commits: 0, repos: [], topLanguage: 'Planejamento e Café ☕', energyLevel: 'Recarregando 🔋' };
     }
+
     const now = new Date();
     const yesterday = new Date(now.getTime() - (24 * 60 * 60 * 1000));
     
@@ -31,7 +32,7 @@ async function fetchGitHubStats() {
     let energyLevel = 'Alto 🚀';
     
     if (commits === 0) {
-        topLanguage = 'Planejamento & Café ☕';
+        topLanguage = 'Planejamento e Café ☕';
         energyLevel = 'Recarregando 🔋';
     }
 
@@ -51,14 +52,14 @@ async function generateAIResponse(stats) {
         Você é uma IA de monitoramento de código analisando o perfil do engenheiro de software Lucas Sabino.
         Hoje ele não fez commits públicos. 
         Escreva um parágrafo de 3 linhas, com humor inteligente, dizendo que pausas são importantes e deduzindo que ele deve estar focando em estudar novas arquiteturas, documentando o WMS TecnoTooling-ALFA ou apenas recarregando as baterias. 
-        Use no máximo 2 emojis. Fale em português do Brasil na terceira pessoa ("O Lucas...").
+        Use no máximo 2 emojis. Fale em português do Brasil na terceira pessoa ("O Lucas..."). Evite usar o caractere "&".
         `;
     } else {
         prompt = `
         Você é uma IA de monitoramento de código analisando o perfil do engenheiro de software Lucas Sabino.
         Hoje ele fez ${stats.commits} commits nos repositórios: ${stats.repos.join(', ')}.
         Escreva um parágrafo de 3 linhas, profissional e descontraído, elogiando a consistência dele.
-        Use no máximo 2 emojis. Fale em português do Brasil na terceira pessoa ("O Lucas...").
+        Use no máximo 2 emojis. Fale em português do Brasil na terceira pessoa ("O Lucas..."). Evite usar o caractere "&".
         `;
     }
 
@@ -77,6 +78,11 @@ async function main() {
         const stats = await fetchGitHubStats();
         const aiMessage = await generateAIResponse(stats);
 
+        const safeAiMessage = aiMessage
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+
         let svgTemplate = fs.readFileSync('template.svg', 'utf-8');
         
         const date = new Date().toLocaleDateString('pt-BR', { 
@@ -84,7 +90,7 @@ async function main() {
         });
         
         svgTemplate = svgTemplate
-            .replace('{{AI_SUMMARY}}', aiMessage)
+            .replace('{{AI_SUMMARY}}', safeAiMessage)
             .replace('{{COMMITS_TODAY}}', stats.commits.toString())
             .replace('{{TOP_LANGUAGE}}', stats.topLanguage)
             .replace('Alto 🚀', stats.energyLevel) 
