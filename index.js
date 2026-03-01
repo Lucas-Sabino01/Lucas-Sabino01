@@ -14,11 +14,17 @@ async function fetchGitHubStats() {
     
     const events = await response.json();
     
+    if (!Array.isArray(events)) {
+        console.error("Resposta inesperada do GitHub:", events);
+        return { commits: 0, repos: [], topLanguage: 'Planejamento & Café ☕', energyLevel: 'Recarregando 🔋' };
+    }
     const now = new Date();
     const yesterday = new Date(now.getTime() - (24 * 60 * 60 * 1000));
     
     const pushEvents = events.filter(e => e.type === 'PushEvent' && new Date(e.created_at) > yesterday);
-    const commits = pushEvents.reduce((acc, event) => acc + event.payload.commits.length, 0);
+    
+    const commits = pushEvents.reduce((acc, event) => acc + (event.payload.commits?.length || 0), 0);
+    
     const reposTouched = [...new Set(pushEvents.map(e => e.repo.name))];
 
     let topLanguage = 'React / C#';
