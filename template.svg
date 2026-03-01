@@ -19,7 +19,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         .bento-wrapper {
@@ -32,6 +31,7 @@
             border: 1px solid var(--border);
             display: flex;
             flex-direction: column;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         }
 
         .bento-grid {
@@ -286,7 +286,7 @@
         </div>
 
         <div class="footer">
-            <div>Automatizado via <strong>GitHub Actions</strong> • Análise por <strong>Gemini 2.5</strong></div>
+            <div style="text-align: left;">🚀 Painel dinâmico atualizado via <strong>GitHub Actions</strong> • A IA do <strong>Gemini 2.5</strong> analisa meus commits diários e gera os insights.</div>
             <div class="footer-tag">Sincronizado: {{DATE}}</div>
         </div>
       </div>
