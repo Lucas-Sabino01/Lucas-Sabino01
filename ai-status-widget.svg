@@ -1,74 +1,293 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="850" height="500">
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="720">
   <foreignObject width="100%" height="100%">
-    <div xmlns="http://www.w3.org/1999/xhtml" style="height: 100%;">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="height: 100%; width: 100%;">
       <style>
-        .widget-container {
-            background: linear-gradient(145deg, #161b22 0%, #0d1117 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            color: #e6edf3;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            padding: 32px;
-            height: 100%;
+        :root {
+            --bg-base: #09090b;
+            --card-bg: #18181b;
+            --border: #27272a;
+            --text-main: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --accent-purple: #a855f7;
+            --accent-green: #10b981;
+            --accent-blue: #0ea5e9;
+            --accent-yellow: #f59e0b;
+            --accent-red: #ef4444;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .bento-wrapper {
+            background-color: var(--bg-base);
+            width: 850px;
+            height: 720px;
+            padding: 24px;
+            box-sizing: border-box;
+            border-radius: 20px;
+            border: 1px solid var(--border);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
-        .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
-        .title { font-size: 20px; font-weight: bold; margin: 0; color: #fff; }
-        .subtitle { font-size: 14px; color: #8b949e; margin-top: 4px; display: flex; align-items: center; gap: 8px;}
-        .status-dot { width: 10px; height: 10px; background-color: #3fb950; border-radius: 50%; }
-        .ai-box { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 24px; position: relative; margin-bottom: 20px; flex-grow: 1; display: flex; align-items: center; }
-        .ai-tag { position: absolute; top: -10px; left: 24px; background: #0d1117; color: #d2a8ff; font-size: 12px; font-weight: bold; padding: 0 8px; border-radius: 4px; }
-        .ai-text { font-size: 16px; line-height: 1.6; color: #c9d1d9; margin: 0; }
-        .stats-grid { display: flex; gap: 16px; }
-        .stat-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 16px; flex: 1; }
-        .stat-title { font-size: 12px; color: #8b949e; margin-bottom: 8px; text-transform: uppercase; }
-        .stat-value { font-size: 24px; font-weight: bold; color: #fff; margin: 0; }
-        .highlight { color: #58a6ff; }
-        /* Ajustei a cor para ficar mais legível e tirei a quebra de linha estranha */
-        .footer { margin-top: 24px; font-size: 13px; color: #a5d6ff; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 16px; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .footer strong { color: #fff; }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto 140px 180px;
+            gap: 16px;
+            flex-grow: 1;
+        }
+
+        .bento-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        }
+
+        .card-span-2 {
+            grid-column: span 2;
+        }
+
+        .card-center {
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1f1f22 0%, var(--card-bg) 100%);
+        }
+
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(168, 85, 247, 0.1);
+            color: var(--accent-purple);
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            width: max-content;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .ai-text {
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .pulse-ring {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .pulse-dot {
+            width: 16px;
+            height: 16px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--accent-green);
+        }
+
+        .status-title { font-size: 18px; font-weight: 600; color: var(--text-main); margin-bottom: 4px; }
+        .status-user { font-size: 14px; color: var(--text-muted); font-family: monospace; }
+        
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: auto;
+        }
+
+        .stat-icon svg { width: 20px; height: 20px; }
+
+        .stat-info { margin-top: 16px; }
+        .stat-label { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .stat-value { font-size: 24px; font-weight: 700; color: var(--text-main); }
+
+        .lang-item { margin-bottom: 14px; }
+        .lang-item:last-child { margin-bottom: 0; }
+        .lang-header { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px; color: var(--text-main); font-weight: 500; }
+        .progress-track { height: 8px; background: rgba(255,255,255,0.05); border-radius: 999px; overflow: hidden; }
+        .progress-fill { height: 100%; border-radius: 999px; }
+        
+        .stats-grid-small { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+        .mini-stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; display: flex; align-items: center; gap: 4px; font-weight: 600; letter-spacing: 0.5px; }
+        .mini-stat-value { font-size: 20px; font-weight: 700; color: var(--text-main); }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8px;
+        }
+        
+        .footer-tag {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 11px;
+        }
+
       </style>
       
-      <div class="widget-container">
-        <div class="header">
-          <div>
-            <h2 class="title">AI Status Overview</h2>
-            <div class="subtitle">
-              <div class="status-dot"></div>
-              A monitorizar o ritmo de código...
+      <div class="bento-wrapper">
+        <div class="bento-grid">
+            
+            <div class="bento-card card-span-2" style="justify-content: center;">
+                <div class="ai-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                    Gemini AI Report
+                </div>
+                <p class="ai-text">Sem commits públicos hoje, o Lucas provavelmente está desvendando novas arquiteturas complexas, lapidando a documentação do WMS TecnoTooling-ALFA com perfeição, ou quem sabe, apenas recarregando as baterias para o próximo nível de codificação. 🔋💻</p>
             </div>
-          </div>
-          <div style="text-align: right; font-size: 12px; color: #8b949e;">
-            ÚLTIMA ATUALIZAÇÃO<br/>
-            <span style="color: #c9d1d9;">01 de mar. de 2026</span>
-          </div>
+
+            <div class="bento-card card-center">
+                <div class="pulse-ring">
+                    <div class="pulse-dot"></div>
+                </div>
+                <div class="status-title">System Active</div>
+                <div class="status-user">@Lucas-Sabino01</div>
+            </div>
+
+            <div class="bento-card">
+                <div class="stat-icon" style="color: var(--accent-green);">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><line x1="6" y1="9" x2="6" y2="21"/></svg>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-label">Commits Hoje</div>
+                    <div class="stat-value">0</div>
+                </div>
+            </div>
+
+            <div class="bento-card">
+                <div class="stat-icon" style="color: var(--accent-blue);">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-label">Foco Principal</div>
+                    <div class="stat-value" style="font-size: 20px;">Planejamento e Café ☕</div>
+                </div>
+            </div>
+
+            <div class="bento-card">
+                <div class="stat-icon" style="color: var(--accent-yellow);">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-label">Nível de Energia</div>
+                    <div class="stat-value" style="font-size: 20px;">Recarregando 🔋</div>
+                </div>
+            </div>
+
+            <div class="bento-card card-span-2">
+                <div class="stat-label" style="margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-purple)"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+                    Linguagens Mais Usadas
+                </div>
+                
+                <div class="lang-item">
+                    <div class="lang-header">
+                        <span>TypeScript</span> <span style="color: var(--text-muted)">91%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 91%; background: var(--accent-blue);"></div>
+                    </div>
+                </div>
+
+                <div class="lang-item">
+                    <div class="lang-header">
+                        <span>HTML</span> <span style="color: var(--text-muted)">9%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 9%; background: var(--accent-purple);"></div>
+                    </div>
+                </div>
+
+                <div class="lang-item">
+                    <div class="lang-header">
+                        <span>C#</span> <span style="color: var(--text-muted)">0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 0%; background: var(--accent-yellow);"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento-card">
+                <div class="stat-label" style="margin-bottom: 8px;">Métricas Globais</div>
+                <div class="stats-grid-small">
+                    <div>
+                        <div class="mini-stat-label">
+                            <span style="color: var(--accent-yellow)">★</span> Stars
+                        </div>
+                        <div class="mini-stat-value">1</div>
+                    </div>
+                    <div>
+                        <div class="mini-stat-label">
+                            <span style="color: var(--accent-green)">●</span> Issues
+                        </div>
+                        <div class="mini-stat-value">0</div>
+                    </div>
+                    <div>
+                        <div class="mini-stat-label">
+                            <span style="color: var(--accent-purple)">⑂</span> PRs
+                        </div>
+                        <div class="mini-stat-value">2</div>
+                    </div>
+                    <div>
+                        <div class="mini-stat-label">
+                            <span style="color: var(--accent-blue)">⚡</span> Contribs
+                        </div>
+                        <div class="mini-stat-value">166</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <div class="ai-box">
-          <div class="ai-tag">ANÁLISE SINTÉTICA (GEMINI AI)</div>
-          <p class="ai-text">Hoje, sem commits públicos do Lucas, podemos deduzir que ele esteja imerso em novas arquiteturas, documentando o WMS TecnoTooling-ALFA ou simplesmente recarregando as baterias. A mente de um engenheiro de software, às vezes, precisa de um tempo "offline" para fermentar as próximas grandes ideias. 🧠💡</p>
-        </div>
-
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-title">Commits Hoje</div>
-            <div class="stat-value">0</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-title">Linguagem Foco</div>
-            <div class="stat-value highlight">Planejamento e Café ☕</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-title">Nível de Energia</div>
-            <div class="stat-value" style="color: #3fb950;">Recarregando 🔋</div>
-          </div>
-        </div>
-        
         <div class="footer">
-          🤖 Widget atualizado diariamente via <strong>GitHub Actions</strong>. A IA do <strong>Google Gemini</strong> analisa os meus commits e escreve o resumo.
+            <div>Automatizado via <strong>GitHub Actions</strong> • Análise por <strong>Gemini 2.5</strong></div>
+            <div class="footer-tag">Sincronizado: 01 de mar. de 2026</div>
         </div>
       </div>
     </div>
