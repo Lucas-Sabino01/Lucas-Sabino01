@@ -1,33 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="850" height="334">
-  <defs>
-    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#161b22" />
-      <stop offset="100%" stop-color="#0d1117" />
-    </linearGradient>
-  </defs>
-
-  <rect width="848" height="332" x="1" y="1" rx="16" fill="url(#bg-grad)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="460">
   <foreignObject width="100%" height="100%">
     <div xmlns="http://www.w3.org/1999/xhtml" style="height: 100%;">
       <style>
         .widget-container {
+            background: linear-gradient(145deg, #161b22 0%, #0d1117 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
             color: #e6edf3;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             padding: 32px;
             height: 100%;
             box-sizing: border-box;
-            position: relative;
-            background: transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
+        .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
         .title { font-size: 20px; font-weight: bold; margin: 0; color: #fff; }
         .subtitle { font-size: 14px; color: #8b949e; margin-top: 4px; display: flex; align-items: center; gap: 8px;}
         .status-dot { width: 10px; height: 10px; background-color: #3fb950; border-radius: 50%; }
-        .ai-box { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 24px; position: relative; }
+        .ai-box { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 24px; position: relative; margin-bottom: 20px; flex-grow: 1; display: flex; align-items: center; }
         .ai-tag { position: absolute; top: -10px; left: 24px; background: #0d1117; color: #d2a8ff; font-size: 12px; font-weight: bold; padding: 0 8px; border-radius: 4px; }
         .ai-text { font-size: 16px; line-height: 1.6; color: #c9d1d9; margin: 0; }
-        .stats-grid { display: flex; gap: 16px; margin-top: 24px; }
+        .stats-grid { display: flex; gap: 16px; }
         .stat-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 16px; flex: 1; }
         .stat-title { font-size: 12px; color: #8b949e; margin-bottom: 8px; text-transform: uppercase; }
         .stat-value { font-size: 24px; font-weight: bold; color: #fff; margin: 0; }
@@ -65,7 +60,7 @@
           </div>
           <div class="stat-card">
             <div class="stat-title">Nível de Energia</div>
-            <div class="stat-value" style="color: #3fb950;">Alto 🚀</div>
+            <div class="stat-value" style="color: #3fb950;">{{ENERGY_LEVEL}}</div>
           </div>
         </div>
       </div>
