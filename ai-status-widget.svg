@@ -51,7 +51,7 @@
 
         <div class="ai-box">
           <div class="ai-tag">ANÁLISE SINTÉTICA (GEMINI AI)</div>
-          <p class="ai-text">Hoje o Lucas Sabino não fez commits públicos, provando que até os mais dedicados engenheiros precisam de um *pit stop* 🔋. Ele deve estar imerso no estudo de novas arquiteturas, documentando o complexo WMS TecnoTooling-ALFA, ou simplesmente recarregando as baterias para o próximo sprint. Afinal, um cérebro descansado é a melhor *feature* para qualquer *deploy*!</p>
+          <p class="ai-text">O Lucas não fez commits públicos hoje, e olha, pausas são cruciais para a saúde mental e a engenharia de software. Com certeza ele está imerso em novas arquiteturas de microserviços, desvendando segredos do universo Serverless, ou finalmente documentando o épico WMS TecnoTooling-ALFA. Ou quem sabe apenas recarregando as baterias para um sprint ainda mais produtivo amanhã! 🔋✨</p>
         </div>
 
         <div class="stats-grid">
@@ -61,7 +61,7 @@
           </div>
           <div class="stat-card">
             <div class="stat-title">Linguagem Foco</div>
-            <div class="stat-value highlight">Planejamento & Café ☕</div>
+            <div class="stat-value highlight">Planejamento e Café ☕</div>
           </div>
           <div class="stat-card">
             <div class="stat-title">Nível de Energia</div>
