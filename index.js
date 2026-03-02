@@ -21,14 +21,22 @@ async function fetchFromGitHub(endpoint) {
 }
 
 async function fetchGitHubStats() {
-    console.log("A buscar dados do perfil...");
+    console.log("A procurar dados do perfil...");
     
-    const events = await fetchFromGitHub(`/users/${USERNAME}/events/public`) || [];
-    const now = new Date();
-    const yesterday = new Date(now.getTime() - (24 * 60 * 60 * 1000));
-    const pushEvents = Array.isArray(events) ? events.filter(e => e.type === 'PushEvent' && new Date(e.created_at) > yesterday) : [];
+    const events = await fetchFromGitHub(`/users/${USERNAME}/events`) || [];
+
+    const formatter = new Intl.DateTimeFormat('pt-BR', { timeZone: 'America/Sao_Paulo', year: 'numeric', month: '2-digit', day: '2-digit' });
+    const todayStr = formatter.format(new Date()); 
+
+    const pushEvents = Array.isArray(events) ? events.filter(e => {
+        if (e.type !== 'PushEvent') return false;
+        const eventDateStr = formatter.format(new Date(e.created_at));
+        return eventDateStr === todayStr;
+    }) : [];
+
     const commitsToday = pushEvents.reduce((acc, event) => acc + (event.payload.commits?.length || 0), 0);
-    const reposTouched = [...new Set(pushEvents.map(e => e.repo.name))];
+    
+    const reposTouched = [...new Set(pushEvents.map(e => e.public ? e.repo.name : 'um projeto confidencial'))];
 
     const repos = await fetchFromGitHub(`/users/${USERNAME}/repos?per_page=100`) || [];
     let totalStars = 0;
@@ -63,8 +71,8 @@ async function fetchGitHubStats() {
     let energyLevel = 'Alto 🚀';
     
     if (commitsToday === 0) {
-        topLanguage = 'Planejamento e Café ☕';
-        energyLevel = 'Recarregando 🔋';
+        topLanguage = 'Planeamento e Café ☕';
+        energyLevel = 'A Recarregar 🔋';
     }
 
     return {
@@ -87,15 +95,23 @@ async function generateAIResponse(stats) {
     if (stats.commitsToday === 0) {
         prompt = `
         Você é uma IA analisando o perfil do engenheiro de software Lucas Sabino.
-        Hoje ele não fez commits públicos. 
-        Escreva um parágrafo curto de no máximo 2 frases, com humor inteligente, deduzindo que ele deve estar focando em estudar novas arquiteturas, documentando o WMS TecnoTooling-ALFA ou recarregando as baterias. 
+        ${contextRules}
+        
+        Situação atual: Hoje ele não fez commits públicos. 
+        
+        Escreva um parágrafo curto de no máximo 2 frases, com humor inteligente, deduzindo que ele deve estar focando em estudar novas arquiteturas, construindo projetos incríveis usando ${stats.topLanguage || 'suas stacks'} nos bastidores, ou apenas recarregando as baterias.
+        Utilize os dados de perfil fornecidos para adicionar aleatoriedade na resposta (por exemplo, mencionar alguma linguagem do top linguagens, a quantidade de constribuições ou PRs). Seja original para evitar que a resposta seja sempre a mesma!
         Use no máximo 2 emojis. Fale em português do Brasil na terceira pessoa ("O Lucas..."). Evite usar o caractere "&". Seja muito conciso.
         `;
     } else {
         prompt = `
         Você é uma IA analisando o perfil do engenheiro de software Lucas Sabino.
-        Hoje ele fez ${stats.commitsToday} commits nos repositórios: ${stats.reposTouched.join(', ')}.
-        Escreva um parágrafo curto de no máximo 2 frases elogiando a consistência dele e o foco em código limpo.
+        ${contextRules}
+        
+        Situação atual: Hoje ele fez ${stats.commitsToday} commits nos repositórios: ${stats.reposTouched.join(', ')}.
+        
+        Escreva um parágrafo curto de no máximo 2 frases elogiando a consistência diária dele e o empenho na entrega de código limpo.
+        Injete aleatoriedade na resposta incluindo informações criativas a partir dos dados do perfil passado (correlacionando as entregas de hoje com seus projetos em ${stats.topLanguage || 'suas tecnologias'}, quantidade de PRs ou estrelas no GitHub). Gere um texto diferente, animador e muito dinâmico!
         Use no máximo 2 emojis. Fale em português do Brasil na terceira pessoa ("O Lucas..."). Evite usar o caractere "&". Seja muito conciso.
         `;
     }
