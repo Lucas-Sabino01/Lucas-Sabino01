@@ -25,13 +25,11 @@ async function fetchGitHubStats() {
     
     const events = await fetchFromGitHub(`/users/${USERNAME}/events`) || [];
 
-    const formatter = new Intl.DateTimeFormat('pt-BR', { timeZone: 'America/Sao_Paulo', year: 'numeric', month: '2-digit', day: '2-digit' });
-    const todayStr = formatter.format(new Date()); 
+    const now = new Date();
+    const yesterday = new Date(now.getTime() - (24 * 60 * 60 * 1000));
 
     const pushEvents = Array.isArray(events) ? events.filter(e => {
-        if (e.type !== 'PushEvent') return false;
-        const eventDateStr = formatter.format(new Date(e.created_at));
-        return eventDateStr === todayStr;
+        return e.type === 'PushEvent' && new Date(e.created_at) > yesterday;
     }) : [];
 
     const commitsToday = pushEvents.reduce((acc, event) => acc + (event.payload.commits?.length || 0), 0);
@@ -71,8 +69,8 @@ async function fetchGitHubStats() {
     let energyLevel = 'Alto 🚀';
     
     if (commitsToday === 0) {
-        topLanguage = 'Planeamento e Café ☕';
-        energyLevel = 'A Recarregar 🔋';
+        topLanguage = 'Planejamento e Café ☕';
+        energyLevel = 'Recarregando 🔋';
     }
 
     return {
@@ -90,7 +88,7 @@ async function fetchGitHubStats() {
 
 async function generateAIResponse(stats) {
     console.log("A solicitar resumo à IA...");
-
+    
     const contextRules = `
     Informações globais do perfil do Lucas para você usar como contexto e criar respostas originais:
     - Linguagens mais usadas (Top 3): ${stats.top3Langs.map(l => l.name).join(', ')}.
@@ -99,6 +97,7 @@ async function generateAIResponse(stats) {
     - Total de Issues: ${stats.totalIssues}.
     - Contribuições globais na vida: ${stats.totalContribs}.
     `;
+
     let prompt = '';
 
     if (stats.commitsToday === 0) {
@@ -106,10 +105,10 @@ async function generateAIResponse(stats) {
         Você é uma IA analisando o perfil do engenheiro de software Lucas Sabino.
         ${contextRules}
         
-        Situação atual: Hoje ele não fez commits públicos. 
+        Situação atual: Nas últimas 24 horas ele não fez commits. 
         
         Escreva um parágrafo curto de no máximo 2 frases, com humor inteligente, deduzindo que ele deve estar focando em estudar novas arquiteturas, construindo projetos incríveis usando ${stats.topLanguage || 'suas stacks'} nos bastidores, ou apenas recarregando as baterias.
-        Utilize os dados de perfil fornecidos para adicionar aleatoriedade na resposta (por exemplo, mencionar alguma linguagem do top linguagens, a quantidade de constribuições ou PRs). Seja original para evitar que a resposta seja sempre a mesma!
+        Utilize os dados de perfil fornecidos para adicionar aleatoriedade na resposta (por exemplo, mencionar alguma linguagem do top linguagens, a quantidade de contribuições ou PRs). Seja original para evitar que a resposta seja sempre a mesma!
         Use no máximo 2 emojis. Fale em português do Brasil na terceira pessoa ("O Lucas..."). Evite usar o caractere "&". Seja muito conciso.
         `;
     } else {
@@ -117,7 +116,7 @@ async function generateAIResponse(stats) {
         Você é uma IA analisando o perfil do engenheiro de software Lucas Sabino.
         ${contextRules}
         
-        Situação atual: Hoje ele fez ${stats.commitsToday} commits nos repositórios: ${stats.reposTouched.join(', ')}.
+        Situação atual: Nas últimas 24 horas ele fez ${stats.commitsToday} commits nos repositórios: ${stats.reposTouched.join(', ')}.
         
         Escreva um parágrafo curto de no máximo 2 frases elogiando a consistência diária dele e o empenho na entrega de código limpo.
         Injete aleatoriedade na resposta incluindo informações criativas a partir dos dados do perfil passado (correlacionando as entregas de hoje com seus projetos em ${stats.topLanguage || 'suas tecnologias'}, quantidade de PRs ou estrelas no GitHub). Gere um texto diferente, animador e muito dinâmico!
