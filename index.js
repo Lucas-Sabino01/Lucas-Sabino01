@@ -90,6 +90,15 @@ async function fetchGitHubStats() {
 
 async function generateAIResponse(stats) {
     console.log("A solicitar resumo à IA...");
+
+    const contextRules = `
+    Informações globais do perfil do Lucas para você usar como contexto e criar respostas originais:
+    - Linguagens mais usadas (Top 3): ${stats.top3Langs.map(l => l.name).join(', ')}.
+    - Total de estrelas em projetos: ${stats.totalStars}.
+    - Total de PRs (Pull Requests): ${stats.totalPRs}.
+    - Total de Issues: ${stats.totalIssues}.
+    - Contribuições globais na vida: ${stats.totalContribs}.
+    `;
     let prompt = '';
 
     if (stats.commitsToday === 0) {
