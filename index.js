@@ -102,25 +102,37 @@ async function generateAIResponse(stats) {
 
     if (stats.commitsToday === 0) {
         prompt = `
-        Você é uma IA analisando o perfil do engenheiro de software Lucas Sabino.
+        Aja como um narrador criativo, elogiando o perfil do dev Lucas Sabino.
+        Dados REAIS do perfil para embasar seu elogio:
         ${contextRules}
         
-        Situação atual: Nas últimas 24 horas ele não fez commits. 
+        Aviso sobre as últimas 24h: Ele não fez commits públicos.
         
-        Escreva um parágrafo curto de no máximo 2 frases, com humor inteligente, deduzindo que ele deve estar focando em estudar novas arquiteturas, construindo projetos incríveis usando ${stats.topLanguage || 'suas stacks'} nos bastidores, ou apenas recarregando as baterias.
-        Utilize os dados de perfil fornecidos para adicionar aleatoriedade na resposta (por exemplo, mencionar alguma linguagem do top linguagens, a quantidade de contribuições ou PRs). Seja original para evitar que a resposta seja sempre a mesma!
-        Use no máximo 2 emojis. Fale em português do Brasil na terceira pessoa ("O Lucas..."). Evite usar o caractere "&". Seja muito conciso.
+        Sua tarefa: Escreva um parágrafo curto (até 2 frases) para o widget do GitHub.
+        Assuma com bom humor que ele está explorando tecnologias nos bastidores, criando algo em secreto com sua linguagem favorita (${stats.topLanguage}), ou recarregando as baterias.
+        
+        REGRAS IMPORTANTES:
+        - NUNCA repita ou cite palavras do meu prompt como "Aviso sobre" ou "Situação".
+        - Fale em português (BR) na terceira pessoa ("O Lucas...").
+        - Use os dados do perfil (ex: PRs, estrelas, contribuições) de forma 100% fluida e natural.
+        - Use 1 ou 2 emojis no máximo. Evite "&".
         `;
     } else {
         prompt = `
-        Você é uma IA analisando o perfil do engenheiro de software Lucas Sabino.
+        Aja como um narrador entusiasmado, orgulhoso do trabalho do dev Lucas Sabino.
+        Dados REAIS do perfil:
         ${contextRules}
         
-        Situação atual: Nas últimas 24 horas ele fez ${stats.commitsToday} commits nos repositórios: ${stats.reposTouched.join(', ')}.
+        Aviso sobre as últimas 24h: Ele fez ${stats.commitsToday} commits nos repositórios: ${stats.reposTouched.join(', ')}.
         
-        Escreva um parágrafo curto de no máximo 2 frases elogiando a consistência diária dele e o empenho na entrega de código limpo.
-        Injete aleatoriedade na resposta incluindo informações criativas a partir dos dados do perfil passado (correlacionando as entregas de hoje com seus projetos em ${stats.topLanguage || 'suas tecnologias'}, quantidade de PRs ou estrelas no GitHub). Gere um texto diferente, animador e muito dinâmico!
-        Use no máximo 2 emojis. Fale em português do Brasil na terceira pessoa ("O Lucas..."). Evite usar o caractere "&". Seja muito conciso.
+        Sua tarefa: Escreva um parágrafo curto (até 2 frases) para o widget do GitHub.
+        Elogie a consistência da entrega de código. Misture isso de forma orgânica com os dados do perfil (ex: número de PRs, ${stats.totalStars} estrelas conquistadas ou top linguagens).
+        
+        REGRAS IMPORTANTES:
+        - NUNCA repita ou liste palavras deste prompt (NUNCA diga coisas como "Aviso sobre", "Situação").
+        - Fale em português (BR) na terceira pessoa ("O Lucas...").
+        - O texto deve soar incrivelmente humano, animado e natural.
+        - Use 1 ou 2 emojis no máximo. Evite "&".
         `;
     }
 

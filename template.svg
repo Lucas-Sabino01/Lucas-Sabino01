@@ -4,8 +4,8 @@
       <style>
         :root {
             --bg-base: #09090b;
-            --card-bg: #18181b;
-            --border: #27272a;
+            --card-bg: rgba(24, 24, 27, 0.65);
+            --border: rgba(255, 255, 255, 0.08);
             --text-main: #f4f4f5;
             --text-muted: #a1a1aa;
             --accent-purple: #a855f7;
@@ -13,6 +13,8 @@
             --accent-blue: #0ea5e9;
             --accent-yellow: #f59e0b;
             --accent-red: #ef4444;
+            --glow-purple: rgba(168, 85, 247, 0.15);
+            --glow-blue: rgba(14, 165, 233, 0.12);
         }
 
         body {
@@ -23,15 +25,19 @@
 
         .bento-wrapper {
             background-color: var(--bg-base);
+            background-image: 
+                radial-gradient(circle at 100% 0%, var(--glow-purple), transparent 50%),
+                radial-gradient(circle at 0% 100%, var(--glow-blue), transparent 50%);
             width: 850px;
             height: 720px;
             padding: 24px;
             box-sizing: border-box;
             border-radius: 20px;
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             flex-direction: column;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
         }
 
         .bento-grid {
@@ -44,6 +50,8 @@
 
         .bento-card {
             background-color: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 24px;
@@ -51,14 +59,14 @@
             flex-direction: column;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
 
         .bento-card::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
         }
 
         .card-span-2 {
@@ -194,7 +202,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><line x1="6" y1="9" x2="6" y2="21"/></svg>
                 </div>
                 <div class="stat-info">
-                    <div class="stat-label">Commits Hoje</div>
+                    <div class="stat-label">Commits (24h)</div>
                     <div class="stat-value">{{COMMITS_TODAY}}</div>
                 </div>
             </div>
