@@ -45,12 +45,13 @@ async function fetchGitHubStats() {
 
     const repos = await fetchFromGitHub(`/users/${USERNAME}/repos?per_page=100&type=owner`) || [];
     
-    const originalRepos = repos.filter(r => !r.fork);
+    const oneYearAgo = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000);
+    const originalRepos = repos.filter(r => !r.fork && new Date(r.pushed_at) > oneYearAgo);
 
     let totalStars = 0;
     let langMap = {};
     
-    console.log(`Analisando linguagens de ${originalRepos.length} repositórios originais...`);
+    console.log(`Analisando linguagens de ${originalRepos.length} repositórios originais ativos (último ano)...`);
 
     for (const r of originalRepos) {
         totalStars += r.stargazers_count;
