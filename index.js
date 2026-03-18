@@ -9,9 +9,14 @@ const headers = {
     'Accept': 'application/vnd.github.v3+json'
 };
 
-async function fetchFromGitHub(endpoint) {
+const searchHeaders = {
+    'Authorization': `token ${GITHUB_TOKEN}`,
+    'Accept': 'application/vnd.github.cloak-preview+json'
+};
+
+async function fetchFromGitHub(endpoint, customHeaders = headers) {
     try {
-        const res = await fetch(`https://api.github.com${endpoint}`, { headers });
+        const res = await fetch(`https://api.github.com${endpoint}`, { headers: customHeaders });
         if (!res.ok) throw new Error(`Erro API GitHub: ${res.status}`);
         return await res.json();
     } catch (error) {
@@ -23,30 +28,39 @@ async function fetchFromGitHub(endpoint) {
 async function fetchGitHubStats() {
     console.log("A procurar dados do perfil...");
     
-    const events = await fetchFromGitHub(`/users/${USERNAME}/events`) || [];
+    const last24hObj = new Date(Date.now() - 24 * 60 * 60 * 1000);
+    const last24hStr = last24hObj.toISOString().split('.')[0] + 'Z';
 
-    const now = new Date();
-    const yesterday = new Date(now.getTime() - (24 * 60 * 60 * 1000));
+    const recentCommitsData = await fetchFromGitHub(`/search/commits?q=author:${USERNAME}+committer-date:>=${last24hStr}`, searchHeaders);
 
-    const pushEvents = Array.isArray(events) ? events.filter(e => {
-        return e.type === 'PushEvent' && new Date(e.created_at) > yesterday;
-    }) : [];
+    let commitsToday = 0;
+    let reposTouched = [];
 
-    const commitsToday = pushEvents.reduce((acc, event) => acc + (event.payload.commits?.length || 0), 0);
+    if (recentCommitsData && recentCommitsData.items) {
+        commitsToday = recentCommitsData.total_count;
+        reposTouched = [...new Set(recentCommitsData.items.map(item => 
+            item.repository.private ? 'um projeto confidencial' : item.repository.name
+        ))];
+    }
+
+    const repos = await fetchFromGitHub(`/users/${USERNAME}/repos?per_page=100&type=owner`) || [];
     
-    const reposTouched = [...new Set(pushEvents.map(e => e.public ? e.repo.name : 'um projeto confidencial'))];
+    const originalRepos = repos.filter(r => !r.fork);
 
-    const repos = await fetchFromGitHub(`/users/${USERNAME}/repos?per_page=100`) || [];
     let totalStars = 0;
     let langMap = {};
     
-    if (Array.isArray(repos)) {
-        repos.forEach(r => {
-            totalStars += r.stargazers_count;
-            if (r.language && r.size) {
-                langMap[r.language] = (langMap[r.language] || 0) + r.size;
+    console.log(`Analisando linguagens de ${originalRepos.length} repositórios originais...`);
+
+    for (const r of originalRepos) {
+        totalStars += r.stargazers_count;
+        
+        const langs = await fetchFromGitHub(`/repos/${USERNAME}/${r.name}/languages`);
+        if (langs) {
+            for (const [lang, bytes] of Object.entries(langs)) {
+                langMap[lang] = (langMap[lang] || 0) + bytes;
             }
-        });
+        }
     }
 
     const totalSize = Object.values(langMap).reduce((a, b) => a + b, 0);
@@ -59,7 +73,7 @@ async function fetchGitHubStats() {
 
     const issuesData = await fetchFromGitHub(`/search/issues?q=author:${USERNAME}+type:issue`);
     const prsData = await fetchFromGitHub(`/search/issues?q=author:${USERNAME}+type:pr`);
-    const commitsData = await fetchFromGitHub(`/search/commits?q=author:${USERNAME}`);
+    const commitsData = await fetchFromGitHub(`/search/commits?q=author:${USERNAME}`, searchHeaders);
 
     const totalIssues = issuesData?.total_count || 0;
     const totalPRs = prsData?.total_count || 0;
@@ -92,7 +106,7 @@ async function generateAIResponse(stats) {
     const contextRules = `
     Informações globais do perfil do Lucas para você usar como contexto e criar respostas originais:
     - Linguagens mais usadas (Top 3): ${stats.top3Langs.map(l => l.name).join(', ')}.
-    - Total de estrelas em projetos: ${stats.totalStars}.
+    - Total de estrelas em projetos originais: ${stats.totalStars}.
     - Total de PRs (Pull Requests): ${stats.totalPRs}.
     - Total de Issues: ${stats.totalIssues}.
     - Contribuições globais na vida: ${stats.totalContribs}.
@@ -102,37 +116,25 @@ async function generateAIResponse(stats) {
 
     if (stats.commitsToday === 0) {
         prompt = `
-        Aja como um narrador criativo, elogiando o perfil do dev Lucas Sabino.
-        Dados REAIS do perfil para embasar seu elogio:
+        Você é uma IA analisando o perfil do engenheiro de software Lucas Sabino.
         ${contextRules}
         
-        Aviso sobre as últimas 24h: Ele não fez commits públicos.
+        Situação atual: Nas últimas 24 horas ele não fez commits. 
         
-        Sua tarefa: Escreva um parágrafo curto (até 2 frases) para o widget do GitHub.
-        Assuma com bom humor que ele está explorando tecnologias nos bastidores, criando algo em secreto com sua linguagem favorita (${stats.topLanguage}), ou recarregando as baterias.
-        
-        REGRAS IMPORTANTES:
-        - NUNCA repita ou cite palavras do meu prompt como "Aviso sobre" ou "Situação".
-        - Fale em português (BR) na terceira pessoa ("O Lucas...").
-        - Use os dados do perfil (ex: PRs, estrelas, contribuições) de forma 100% fluida e natural.
-        - Use 1 ou 2 emojis no máximo. Evite "&".
+        Escreva um parágrafo curto de no máximo 2 frases, com humor inteligente, deduzindo que ele deve estar focando em estudar novas arquiteturas, construindo projetos incríveis usando ${stats.topLanguage || 'suas stacks'} nos bastidores, ou apenas recarregando as baterias.
+        Utilize os dados de perfil fornecidos para adicionar aleatoriedade na resposta (por exemplo, mencionar alguma linguagem do top linguagens, a quantidade de contribuições ou PRs). Seja original para evitar que a resposta seja sempre a mesma!
+        Use no máximo 2 emojis. Fale em português do Brasil na terceira pessoa ("O Lucas..."). Evite usar o caractere "&". Seja muito conciso.
         `;
     } else {
         prompt = `
-        Aja como um narrador entusiasmado, orgulhoso do trabalho do dev Lucas Sabino.
-        Dados REAIS do perfil:
+        Você é uma IA analisando o perfil do engenheiro de software Lucas Sabino.
         ${contextRules}
         
-        Aviso sobre as últimas 24h: Ele fez ${stats.commitsToday} commits nos repositórios: ${stats.reposTouched.join(', ')}.
+        Situação atual: Nas últimas 24 horas ele fez ${stats.commitsToday} commits nos repositórios: ${stats.reposTouched.join(', ')}.
         
-        Sua tarefa: Escreva um parágrafo curto (até 2 frases) para o widget do GitHub.
-        Elogie a consistência da entrega de código. Misture isso de forma orgânica com os dados do perfil (ex: número de PRs, ${stats.totalStars} estrelas conquistadas ou top linguagens).
-        
-        REGRAS IMPORTANTES:
-        - NUNCA repita ou liste palavras deste prompt (NUNCA diga coisas como "Aviso sobre", "Situação").
-        - Fale em português (BR) na terceira pessoa ("O Lucas...").
-        - O texto deve soar incrivelmente humano, animado e natural.
-        - Use 1 ou 2 emojis no máximo. Evite "&".
+        Escreva um parágrafo curto de no máximo 2 frases elogiando a consistência diária dele e o empenho na entrega de código limpo.
+        Injete aleatoriedade na resposta incluindo informações criativas a partir dos dados do perfil passado (correlacionando as entregas de hoje com seus projetos em ${stats.topLanguage || 'suas tecnologias'}, quantidade de PRs ou estrelas no GitHub). Gere um texto diferente, animador e muito dinâmico!
+        Use no máximo 2 emojis. Fale em português do Brasil na terceira pessoa ("O Lucas..."). Evite usar o caractere "&". Seja muito conciso.
         `;
     }
 
