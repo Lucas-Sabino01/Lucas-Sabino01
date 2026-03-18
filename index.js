@@ -37,15 +37,22 @@ async function fetchGitHubStats() {
     let reposTouched = [];
 
     if (recentCommitsData && recentCommitsData.items) {
+<<<<<<< HEAD
         commitsToday = recentCommitsData.total_count;
+=======
+        commitsToday = recentCommitsData.total_count;   
+>>>>>>> e28f05567f84115d723025bf86953b04d77fa454
         reposTouched = [...new Set(recentCommitsData.items.map(item => 
             item.repository.private ? 'um projeto confidencial' : item.repository.name
         ))];
     }
+<<<<<<< HEAD
 
     const repos = await fetchFromGitHub(`/users/${USERNAME}/repos?per_page=100&type=owner`) || [];
     
     const originalRepos = repos.filter(r => !r.fork);
+=======
+>>>>>>> e28f05567f84115d723025bf86953b04d77fa454
 
     let totalStars = 0;
     let langMap = {};
