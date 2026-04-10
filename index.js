@@ -146,6 +146,11 @@ async function generateAIResponse(stats) {
             body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
         });
         const data = await response.json();
+        
+        if (!data.candidates || data.candidates.length === 0) {
+            console.error("⚠️ Resposta de Erro do Google Gemini:", JSON.stringify(data, null, 2));
+            throw new Error("A API não retornou o formato de texto esperado.");
+        }
         return data.candidates[0].content.parts[0].text.trim();
     } catch (e) {
         console.error("Erro na IA:", e);
