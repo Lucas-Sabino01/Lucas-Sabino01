@@ -186,7 +186,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
                     Gemini AI Report
                 </div>
-                <p class="ai-text">O Lucas Sabino irradia consistência diária, com 19 commits recentes que revelam um empenho notável na entrega de código limpo! Esse ritmo, talvez impulsionado pela maestria em Python no backend, é a força motriz para que suas 2 estrelas e 2 PRs se multipliquem em um futuro brilhante! ✨</p>
+                <p class="ai-text">A IA está em manutenção de rotina, mas o código não para! O Lucas continua focando em arquitetura e entregas sólidas hoje. 🚀💻</p>
             </div>
 
             <div class="bento-card card-center">
@@ -203,7 +203,7 @@
                 </div>
                 <div class="stat-info">
                     <div class="stat-label">Commits (24h)</div>
-                    <div class="stat-value">19</div>
+                    <div class="stat-value">0</div>
                 </div>
             </div>
 
@@ -213,7 +213,7 @@
                 </div>
                 <div class="stat-info">
                     <div class="stat-label">Foco Principal</div>
-                    <div class="stat-value" style="font-size: 20px;">Python</div>
+                    <div class="stat-value" style="font-size: 20px;">Planejamento e Café ☕</div>
                 </div>
             </div>
 
@@ -223,7 +223,7 @@
                 </div>
                 <div class="stat-info">
                     <div class="stat-label">Nível de Energia</div>
-                    <div class="stat-value" style="font-size: 20px;">Alto 🚀</div>
+                    <div class="stat-value" style="font-size: 20px;">Recarregando 🔋</div>
                 </div>
             </div>
 
@@ -235,28 +235,28 @@
                 
                 <div class="lang-item">
                     <div class="lang-header">
-                        <span>Python</span> <span style="color: var(--text-muted)">45%</span>
+                        <span>TypeScript</span> <span style="color: var(--text-muted)">91%</span>
                     </div>
                     <div class="progress-track">
-                        <div class="progress-fill" style="width: 45%; background: var(--accent-blue);"></div>
+                        <div class="progress-fill" style="width: 91%; background: var(--accent-blue);"></div>
                     </div>
                 </div>
 
                 <div class="lang-item">
                     <div class="lang-header">
-                        <span>TypeScript</span> <span style="color: var(--text-muted)">42%</span>
+                        <span>Java</span> <span style="color: var(--text-muted)">6%</span>
                     </div>
                     <div class="progress-track">
-                        <div class="progress-fill" style="width: 42%; background: var(--accent-purple);"></div>
+                        <div class="progress-fill" style="width: 6%; background: var(--accent-purple);"></div>
                     </div>
                 </div>
 
                 <div class="lang-item">
                     <div class="lang-header">
-                        <span>CSS</span> <span style="color: var(--text-muted)">6%</span>
+                        <span>CSS</span> <span style="color: var(--text-muted)">1%</span>
                     </div>
                     <div class="progress-track">
-                        <div class="progress-fill" style="width: 6%; background: var(--accent-yellow);"></div>
+                        <div class="progress-fill" style="width: 1%; background: var(--accent-yellow);"></div>
                     </div>
                 </div>
             </div>
@@ -286,7 +286,7 @@
                         <div class="mini-stat-label">
                             <span style="color: var(--accent-blue)">⚡</span> Contribs
                         </div>
-                        <div class="mini-stat-value">227</div>
+                        <div class="mini-stat-value">269</div>
                     </div>
                 </div>
             </div>
@@ -295,7 +295,7 @@
 
         <div class="footer">
             <div style="text-align: left;">🚀 Painel dinâmico atualizado via <strong>GitHub Actions</strong> • A IA do <strong>Gemini 2.5</strong> analisa meus commits diários e gera os insights.</div>
-            <div class="footer-tag">Sincronizado: 18 de mar. de 2026</div>
+            <div class="footer-tag">Sincronizado: 09 de abr. de 2026</div>
         </div>
       </div>
     </div>
