@@ -186,7 +186,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
                     Gemini AI Report
                 </div>
-                <p class="ai-text">O Lucas demonstra uma consistência notável ao realizar um commit em seu projeto confidencial nas últimas 24 horas, certamente aplicando seu domínio em TypeScript. Esse empenho diário em entregar código limpo é o alicerce para futuras estrelas e para a expansão de suas 276 contribuições, um verdadeiro foguete! 🚀✨</p>
+                <p class="ai-text">A IA está em manutenção de rotina, mas o código não para! O Lucas continua focando em arquitetura e entregas sólidas hoje. 🚀💻</p>
             </div>
 
             <div class="bento-card card-center">
@@ -235,28 +235,28 @@
                 
                 <div class="lang-item">
                     <div class="lang-header">
-                        <span>TypeScript</span> <span style="color: var(--text-muted)">73%</span>
+                        <span>TypeScript</span> <span style="color: var(--text-muted)">80%</span>
                     </div>
                     <div class="progress-track">
-                        <div class="progress-fill" style="width: 73%; background: var(--accent-blue);"></div>
+                        <div class="progress-fill" style="width: 80%; background: var(--accent-blue);"></div>
                     </div>
                 </div>
 
                 <div class="lang-item">
                     <div class="lang-header">
-                        <span>Java</span> <span style="color: var(--text-muted)">23%</span>
+                        <span>Java</span> <span style="color: var(--text-muted)">16%</span>
                     </div>
                     <div class="progress-track">
-                        <div class="progress-fill" style="width: 23%; background: var(--accent-purple);"></div>
+                        <div class="progress-fill" style="width: 16%; background: var(--accent-purple);"></div>
                     </div>
                 </div>
 
                 <div class="lang-item">
                     <div class="lang-header">
-                        <span>JavaScript</span> <span style="color: var(--text-muted)">3%</span>
+                        <span>JavaScript</span> <span style="color: var(--text-muted)">2%</span>
                     </div>
                     <div class="progress-track">
-                        <div class="progress-fill" style="width: 3%; background: var(--accent-yellow);"></div>
+                        <div class="progress-fill" style="width: 2%; background: var(--accent-yellow);"></div>
                     </div>
                 </div>
             </div>
@@ -286,7 +286,7 @@
                         <div class="mini-stat-label">
                             <span style="color: var(--accent-blue)">⚡</span> Contribs
                         </div>
-                        <div class="mini-stat-value">276</div>
+                        <div class="mini-stat-value">275</div>
                     </div>
                 </div>
             </div>
@@ -295,7 +295,7 @@
 
         <div class="footer">
             <div style="text-align: left;">🚀 Painel dinâmico atualizado via <strong>GitHub Actions</strong> • A IA do <strong>Gemini 2.5</strong> analisa meus commits diários e gera os insights.</div>
-            <div class="footer-tag">Sincronizado: 23 de abr. de 2026</div>
+            <div class="footer-tag">Sincronizado: 24 de abr. de 2026</div>
         </div>
       </div>
     </div>
