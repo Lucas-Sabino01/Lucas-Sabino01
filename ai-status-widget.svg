@@ -186,7 +186,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
                     Gemini AI Report
                 </div>
-                <p class="ai-text">Sem commits nas últimas 24h, O Lucas provavelmente está em modo 'engenharia reversa de ideias', arquitetando o próximo projeto épico em Java com planejamento e muito café ☕. Ou quem sabe, após suas 304 contribuições, ele simplesmente decidiu recarregar as baterias para a próxima onda de 5 PRs.</p>
+                <p class="ai-text">Sem commits recentes, o Lucas deve estar secretamente orquestrando um projeto épico em TypeScript, que fará seus 5 PRs parecerem uma singela amostra de seu potencial. Ou, é claro, ele está simplesmente recarregando as baterias, com muito café ☕, preparando o terreno para sua próxima obra-prima.</p>
             </div>
 
             <div class="bento-card card-center">
@@ -295,7 +295,7 @@
 
         <div class="footer">
             <div style="text-align: left;">🚀 Painel dinâmico atualizado via <strong>GitHub Actions</strong> • A IA do <strong>Gemini 2.5</strong> analisa meus commits diários e gera os insights.</div>
-            <div class="footer-tag">Sincronizado: 26 de jun. de 2026</div>
+            <div class="footer-tag">Sincronizado: 28 de jun. de 2026</div>
         </div>
       </div>
     </div>
