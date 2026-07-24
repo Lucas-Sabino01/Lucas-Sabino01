@@ -186,7 +186,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
                     Gemini AI Report
                 </div>
-                <p class="ai-text">O Lucas mantém sua pegada consistente, marcando um commit no projeto confidencial, um passo sólido que reflete a dedicação a entregas de código limpo. Com sua experiência em TypeScript e o foco que resultou em 5 PRs, cada contribuição é valiosa, mostrando um empenho em qualidade que faz a diferença! ✨🚀</p>
+                <p class="ai-text">Sem commits nas últimas 24h? O Lucas, com suas 327 contribuições e maestria em Kotlin, deve estar arquitetando o próximo projeto de 1 estrela com muito café ☕ e planejamento estratégico. Ou, quem sabe, apenas recarregando as baterias para surpreender a todos com mais uma de suas 5 PRs. ✨</p>
             </div>
 
             <div class="bento-card card-center">
@@ -203,7 +203,7 @@
                 </div>
                 <div class="stat-info">
                     <div class="stat-label">Commits (24h)</div>
-                    <div class="stat-value">1</div>
+                    <div class="stat-value">0</div>
                 </div>
             </div>
 
@@ -213,7 +213,7 @@
                 </div>
                 <div class="stat-info">
                     <div class="stat-label">Foco Principal</div>
-                    <div class="stat-value" style="font-size: 20px;">TypeScript</div>
+                    <div class="stat-value" style="font-size: 20px;">Planejamento e Café ☕</div>
                 </div>
             </div>
 
@@ -223,7 +223,7 @@
                 </div>
                 <div class="stat-info">
                     <div class="stat-label">Nível de Energia</div>
-                    <div class="stat-value" style="font-size: 20px;">Alto 🚀</div>
+                    <div class="stat-value" style="font-size: 20px;">Recarregando 🔋</div>
                 </div>
             </div>
 
@@ -295,7 +295,7 @@
 
         <div class="footer">
             <div style="text-align: left;">🚀 Painel dinâmico atualizado via <strong>GitHub Actions</strong> • A IA do <strong>Gemini 2.5</strong> analisa meus commits diários e gera os insights.</div>
-            <div class="footer-tag">Sincronizado: 22 de jul. de 2026</div>
+            <div class="footer-tag">Sincronizado: 23 de jul. de 2026</div>
         </div>
       </div>
     </div>
