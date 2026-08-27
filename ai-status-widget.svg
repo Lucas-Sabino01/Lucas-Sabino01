@@ -203,7 +203,7 @@
                 </div>
                 <div class="stat-info">
                     <div class="stat-label">Commits (24h)</div>
-                    <div class="stat-value">3</div>
+                    <div class="stat-value">0</div>
                 </div>
             </div>
 
@@ -213,7 +213,7 @@
                 </div>
                 <div class="stat-info">
                     <div class="stat-label">Foco Principal</div>
-                    <div class="stat-value" style="font-size: 20px;">TypeScript</div>
+                    <div class="stat-value" style="font-size: 20px;">Planejamento e Café ☕</div>
                 </div>
             </div>
 
@@ -223,7 +223,7 @@
                 </div>
                 <div class="stat-info">
                     <div class="stat-label">Nível de Energia</div>
-                    <div class="stat-value" style="font-size: 20px;">Alto 🚀</div>
+                    <div class="stat-value" style="font-size: 20px;">Recarregando 🔋</div>
                 </div>
             </div>
 
@@ -295,7 +295,7 @@
 
         <div class="footer">
             <div style="text-align: left;">🚀 Painel dinâmico atualizado via <strong>GitHub Actions</strong> • A IA do <strong>Gemini 2.5</strong> analisa meus commits diários e gera os insights.</div>
-            <div class="footer-tag">Sincronizado: 25 de ago. de 2026</div>
+            <div class="footer-tag">Sincronizado: 27 de ago. de 2026</div>
         </div>
       </div>
     </div>
